@@ -17,6 +17,8 @@ function hookNode (node, basedOn) {
       case 'letters':
         units = Array.from(node.textContent)
         break
+      default:
+        // do nothing
     }
     units.forEach((unit) => {
       frag.appendChild(dummySpan(unit))
@@ -104,7 +106,7 @@ class HTMLEllipsis extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (prevProps.winWidth !== this.props.winWidth) {
+    if (prevProps.winWidth !== this.props.winWidth || prevProps.nanoid !== this.props.nanoid) {
       this.copyStyleToCanvas()
     }
     if (this.props !== prevProps) {

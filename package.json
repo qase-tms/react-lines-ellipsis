@@ -77,5 +77,8 @@
     "aliases": {
       "react": "preact"
     }
+  },
+  "dependencies": {
+    "nanoid": "^3.1.9"
   }
 }

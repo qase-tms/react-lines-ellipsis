@@ -1,5 +1,6 @@
 const React = require('react')
 const debounce = require('lodash/debounce')
+const nanoid = require('nanoid').nanoid
 const isBrowser = typeof window !== 'undefined'
 
 function responsiveHOC (wait = 150, debounceOptions) {
@@ -8,7 +9,8 @@ function responsiveHOC (wait = 150, debounceOptions) {
       constructor (props) {
         super(props)
         this.state = {
-          winWidth: isBrowser ? window.innerWidth : 0
+          winWidth: isBrowser ? window.innerWidth : 0,
+          nanoid: nanoid()
         }
         this.onResize = debounce(this.onResize.bind(this), wait, debounceOptions)
       }
@@ -24,7 +26,8 @@ function responsiveHOC (wait = 150, debounceOptions) {
 
       onResize () {
         this.setState({
-          winWidth: window.innerWidth
+          winWidth: window.innerWidth,
+          nanoid: nanoid()
         })
       }
 
